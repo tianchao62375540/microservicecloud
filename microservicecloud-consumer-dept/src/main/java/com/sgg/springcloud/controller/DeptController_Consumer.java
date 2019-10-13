@@ -2,6 +2,7 @@ package com.sgg.springcloud.controller;
 
 import com.sgg.springcloud.entity.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,9 @@ public class DeptController_Consumer {
     @RequestMapping("/consumer/dept/list")
     public List<Dept> list(){
         return restTemplate.getForObject(REST_URL_PREFIX+"/dept/list", List.class);
+    }
+    @GetMapping(value = "/consumer/dept/discovery")
+    public Object discovery(){
+        return restTemplate.getForObject(REST_URL_PREFIX+"/dept/discovery",Object.class);
     }
 }

@@ -11,6 +11,7 @@
         <module>microservicecloud-api</module>
         <module>microservicecloud-provider-dept</module>
         <module>microservicecloud-consumer-dept</module>
+        <module>microservicecloud-eureka</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -71,5 +72,28 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <build>
+        <finalName>microservicecloud</finalName>
+        <resources>
+            <resource>
+                <!-- 允许访问 -->
+                <directory>src/main/resources</directory>
+                <!-- 过滤开启 -->
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <!-- 负责解析解读 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <!-- 以$开始  $结束 可以读取 -->
+                    <delimiters>
+                        <delimit>$</delimit>
+                    </delimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
