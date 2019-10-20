@@ -1,0 +1,26 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka,http://localhost:7003/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+
+info:
+  app.name: atguigu-microcloud
+  company.name: www.sgg.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+zuul:
+  ignored-services: "*"
+  routes:
+    mydept.serviceId: microservicecloud-consumer-dept-feign
+    mydept.path: /mydept/**
+  prefix: /sgg
