@@ -8,3 +8,7 @@ eureka:
 spring:
   application:
     name: microservicecloud-consumer-dept-feign
+feign:
+  hystrix:
+    enabled: true
+
